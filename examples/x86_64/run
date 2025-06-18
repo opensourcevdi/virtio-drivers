@@ -1,0 +1,2 @@
+#!/bin/sh -eu
+exec qemu-system-x86_64 -M q35 -accel kvm -serial stdio -vga none -device virtio-gpu -kernel kernel

@@ -110,13 +110,16 @@ fn virtio_gpu<T: Transport>(transport: T) {
             fb[idx] = x as u8;
             fb[idx + 1] = y as u8;
             fb[idx + 2] = (x + y) as u8;
+            // fb[idx] = 0 as u8;
+            // fb[idx + 1] = 0 as u8;
+            // fb[idx + 2] = 255 as u8;
         }
     }
     gpu.flush().expect("failed to flush");
     //delay some time
     info!("virtio-gpu show graphics....");
     for _ in 0..10000 {
-        for _ in 0..100000 {
+        for _ in 0..10000000 {
             unsafe {
                 core::arch::asm!("nop");
             }
